@@ -42,7 +42,7 @@ return(
 <br/>
 
 
-<button onClick={onSave} > Save Trip</button>
+<button onClick={onSave} > Save The Trip </button>
 </>
 )
 
