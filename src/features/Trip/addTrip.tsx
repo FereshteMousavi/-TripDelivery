@@ -18,16 +18,20 @@ const getCanTakeFoodStuff=():boolean=>{
     return canTakeFoodStuff;
 }
 function onSave(e:any){
-    const allInputs=`${tripFrom} , ${tripTo} , ${tripStartDate}  is input`
+    const allInputs=`the trip will start from ${tripFrom} city to ${tripTo} 
+    city at ${tripStartDate}  and will arrive at ${tripArrivalDate} `;
 alert(allInputs);
 }
 return(
 <>
-<div> Add  Trip Information:</div>
-<div>Trip From : <input type="text" onChange={e=>setTripFrom(e.target.value)} value={tripFrom} /> </div>
-<br></br>
-<div>Trip To : <input type="text" onChange={e=>setTripTo(e.target.value)} value={tripTo} /> </div>
-<br></br>
+<div  style={{backgroundColor:'yellow'}}> Add  Trip Information:</div>
+<br/>
+<div>
+<div style={{display:'inline-block'}}>Trip From : <input type="text" onChange={e=>setTripFrom(e.target.value)} value={tripFrom} /> </div>
+
+<div style={{display:'inline-block'}}>Trip To : <input type="text" onChange={e=>setTripTo(e.target.value)} value={tripTo} /> </div>
+</div>
+<br/>
 <div>TakeOverLocation : <input type="text" onChange={e=>setTakeOverLocation(e.target.value)} value={takeOverLocation} /> </div>
 <br></br>
 <div>Trip Start Date  : <input type="text" onChange={e=>setTripStartDate(e.target.value)} value={tripStartDate} /> </div>
@@ -35,14 +39,12 @@ return(
 <div></div>
 <div>Trip Arrival Date  : <input type="text" onChange={e=>setTripArrivalDate(e.target.value)} value={tripArrivalDate} /> </div>
 <br></br>
-<div>Trip From : <input type="text" onChange={e=>setTripFrom(e.target.value)} value={tripFrom} /> </div>
-<br></br>
 <div>can take food stuff? : <input type="checkbox" checked={canTakeFoodStuff} onChange={e=>setCanTakeFoodStuff(e.target.checked)} /> </div>
 <div> can be package hidden? <input type="checkbox" checked={canBeHidden} onChange={e=>setCanBeHidden(e.target.checked)}/></div>
 <br/>
 
 
-<button onClick={onSave} > Save the Trip </button>
+<button onClick={onSave} > Save Trip </button>
 </>
 )
 
