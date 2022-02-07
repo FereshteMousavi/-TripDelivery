@@ -8,18 +8,51 @@ const [tripFrom,setTripFrom]=useState("");
 
 const [tripTo,setTripTo]=useState("");
 const [tripStartDate,setTripStartDate]=useState("");
+const [tripStartTime,setTripStartTime]=useState("");
 const [tripArrivalDate,setTripArrivalDate]=useState("");
+const [tripArrivalTime,setTripArrivalTime]=useState("");
 const [takeOverLocation,setTakeOverLocation]=useState("");
 const [canTakeFoodStuff,setCanTakeFoodStuff]=useState(false);
 const [handOverLocation,setHandOverLocation]=useState("");
 const [canBeHidden,setCanBeHidden]=useState(false);
+const [selectedWeight,setSelectedWeight]=useState("");
+const getSelectedWeight=():string=>{
+    return selectedWeight;
+}
+
+
+
+
+
+const sameLineStyle = {display:'inline-block'};
 const weightRange= ["light","medium","heavy"];
 const getCanTakeFoodStuff=():boolean=>{
     return canTakeFoodStuff;
+        
+    }
+
+
+const foodSet=():string=>{
+if (getCanTakeFoodStuff()) { 
+    return "not";
 }
+else return "";
+}
+
+const packVisiblty=():string=>{
+    if (canBeHidden) {
+        return "not";
+    }
+    else return "";
+}
+
 function onSave(e:any){
-    const allInputs=`the trip will start from ${tripFrom} city to ${tripTo} 
-    city at ${tripStartDate}  and will arrive at ${tripArrivalDate} `;
+    const allInputs=`the trip will start from ' ${tripFrom} '  on ${tripStartDate}   at ${tripStartTime}.
+    you can hand over at ${takeOverLocation}  on ${tripStartDate} at ${tripStartTime} .
+    I will arrive to ' ${tripTo} ' on ${tripArrivalDate}  at ${tripArrivalTime} time. 
+    you can take over at ${handOverLocation} ' on ${tripArrivalDate}   at ${tripArrivalTime} time. 
+    . The packet must ${packVisiblty()} be visible and food stuff can ${foodSet()} be acceptable 
+    The maximum weight can be ${getSelectedWeight()}`;
 alert(allInputs);
 }
 return(
@@ -27,20 +60,41 @@ return(
 <div  style={{backgroundColor:'yellow'}}> Add  Trip Information:</div>
 <br/>
 <div>
-<div style={{display:'inline-block'}}>Trip From : <input type="text" onChange={e=>setTripFrom(e.target.value)} value={tripFrom} /> </div>
-
-<div style={{display:'inline-block'}}>Trip To : <input type="text" onChange={e=>setTripTo(e.target.value)} value={tripTo} /> </div>
+<div style={sameLineStyle}>Trip From : <input type="text" onChange={e=>setTripFrom(e.target.value)} value={tripFrom} /> </div>
+&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle}>Trip To : <input type="text" onChange={e=>setTripTo(e.target.value)} value={tripTo} /> </div>
+&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle}>TakeOverLocation : <input type="text" onChange={e=>setTakeOverLocation(e.target.value)} value={takeOverLocation} /> </div>
 </div>
-<br/>
-<div>TakeOverLocation : <input type="text" onChange={e=>setTakeOverLocation(e.target.value)} value={takeOverLocation} /> </div>
 <br></br>
-<div>Trip Start Date  : <input type="text" onChange={e=>setTripStartDate(e.target.value)} value={tripStartDate} /> </div>
+<div>
+<div style={sameLineStyle}>Trip Start Date  : <input type="text" onChange={e=>setTripStartDate(e.target.value)} value={tripStartDate} /> </div>
+&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle}>Trip Start time  : <input type="text" onChange={e=>setTripStartTime(e.target.value)} value={tripStartTime} /> </div>
+</div>
 <br></br>
-<div></div>
-<div>Trip Arrival Date  : <input type="text" onChange={e=>setTripArrivalDate(e.target.value)} value={tripArrivalDate} /> </div>
+<div>
+<div style={sameLineStyle}>Trip Arrival Date  : <input type="text" onChange={e=>setTripArrivalDate(e.target.value)} value={tripArrivalDate} /> </div>
+&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle}>Trip Arrival time  : <input type="text" onChange={e=>setTripArrivalTime(e.target.value)} value={tripArrivalTime} /> </div>
+&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle}>Hand over location  : <input type="text" onChange={e=>setHandOverLocation(e.target.value)} value={handOverLocation} /> </div>
+</div>
 <br></br>
-<div>can take food stuff? : <input type="checkbox" checked={canTakeFoodStuff} onChange={e=>setCanTakeFoodStuff(e.target.checked)} /> </div>
-<div> can be package hidden? <input type="checkbox" checked={canBeHidden} onChange={e=>setCanBeHidden(e.target.checked)}/></div>
+<div>
+<div style={sameLineStyle}>can take food stuff? : <input type="checkbox" checked={canTakeFoodStuff} onChange={e=>setCanTakeFoodStuff(e.target.checked)} /> </div>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle}> can be package hidden? <input type="checkbox" checked={canBeHidden} onChange={e=>setCanBeHidden(e.target.checked)}/></div>
+</div>
+<br></br>
+<div> The maximum weight than can be delivered is: 
+&nbsp;&nbsp;&nbsp;
+<input type="radio" value="5" name="acceptableWeight"  onChange={e=>setSelectedWeight(e.target.value)}/> beatween 0 to 5 kilo
+&nbsp;&nbsp;&nbsp;
+<input type="radio" value="10" name="acceptableWeight"  onChange={e=>setSelectedWeight(e.target.value)}/> beatween 5 to 10 kilo
+&nbsp;&nbsp;&nbsp;
+<input type="radio" value="15" name="acceptableWeight" onChange={e=>setSelectedWeight(e.target.value)}/> more than 10 kilo
+</div> 
 <br/>
 
 
