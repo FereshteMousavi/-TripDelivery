@@ -19,8 +19,49 @@ const [selectedWeight,setSelectedWeight]=useState("");
 const getSelectedWeight=():string=>{
     return selectedWeight;
 }
+const getValidationStyle=(userInput:string,userInputType:string):any=>{
 
+    if(userInput===''){
+        return {color:'red',display:'block'};
 
+    }
+    else {
+       return {display:'none'}; 
+    }
+}
+const validateRequiredInfo=():boolean=>{
+    if(tripStartDate==='' || tripStartTime==='' ){
+        alert('tripStartDate or tripStartTime is empty');
+        return false;  
+        
+    }
+    if (tripTo===''||tripFrom===''){
+        alert('tripTo or tripFrom is empty');
+        return false;
+    }
+    if (tripArrivalDate==='' || tripArrivalTime ){
+        alert('tripArrivalDate or tripArrivalTime is empty ');
+        return false;
+    }
+    if (takeOverLocation===''||handOverLocation===''){
+        alert('handOverLocation or takeOverLocation is empty');
+        return false;
+    }
+    if (tripArrivalDate==='' || tripArrivalTime ==='' ){
+        alert('tripArrivalDate or tripArrivalTime is empty ');
+        return false;
+    }
+    if (
+        canTakeFoodStuff===null || canTakeFoodStuff===undefined ){
+            alert('canTakeFoodStuff is empty');
+        return false;
+    }
+    if(canBeHidden===null || canBeHidden===null || selectedWeight===null ){
+        alert('canBeHidden or selectedWeight is empty ');
+        return false;
+    }
+    return true;
+}
 
 
 
@@ -47,6 +88,10 @@ const packVisiblty=():string=>{
 }
 
 function onSave(e:any){
+    if(validateRequiredInfo()===false){
+        
+        return;
+    }
     const allInputs=`the trip will start from ' ${tripFrom} '  on ${tripStartDate}   at ${tripStartTime}.
     you can hand over at ${takeOverLocation}  on ${tripStartDate} at ${tripStartTime} .
     I will arrive to ' ${tripTo} ' on ${tripArrivalDate}  at ${tripArrivalTime} time. 
@@ -61,9 +106,9 @@ return(
 <br/>
 <div>
 <div style={sameLineStyle}>Trip From : <input type="text" onChange={e=>setTripFrom(e.target.value)} value={tripFrom} /> </div>
-&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle} ><label style={getValidationStyle(tripFrom,"string")}>*</label></div>
 <div style={sameLineStyle}>Trip To : <input type="text" onChange={e=>setTripTo(e.target.value)} value={tripTo} /> </div>
-&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle} ><label style={getValidationStyle(tripTo,"string")}>*</label></div>
 <div style={sameLineStyle}>TakeOverLocation : <input type="text" onChange={e=>setTakeOverLocation(e.target.value)} value={takeOverLocation} /> </div>
 </div>
 <br></br>
