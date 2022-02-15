@@ -110,34 +110,35 @@ return(
 <div style={sameLineStyle}>Trip To : <input type="text" onChange={e=>setTripTo(e.target.value)} value={tripTo} /> </div>
 <div style={sameLineStyle} ><label style={getValidationStyle(tripTo,"string")}>*</label></div>
 <div style={sameLineStyle}>TakeOverLocation : <input type="text" onChange={e=>setTakeOverLocation(e.target.value)} value={takeOverLocation} /> </div>
+<div style={sameLineStyle} ><label style={getValidationStyle(takeOverLocation,"string")}>*</label></div>
 </div>
 <br></br>
 <div>
 <div style={sameLineStyle}>Trip Start Date  : <input type="text" onChange={e=>setTripStartDate(e.target.value)} value={tripStartDate} /> </div>
-&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle} ><label style={getValidationStyle(tripStartDate,"string")}>*</label></div>
 <div style={sameLineStyle}>Trip Start time  : <input type="text" onChange={e=>setTripStartTime(e.target.value)} value={tripStartTime} /> </div>
+<div style={sameLineStyle} ><label style={getValidationStyle(tripStartTime,"string")}>*</label></div>
 </div>
 <br></br>
 <div>
 <div style={sameLineStyle}>Trip Arrival Date  : <input type="text" onChange={e=>setTripArrivalDate(e.target.value)} value={tripArrivalDate} /> </div>
-&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle} ><label style={getValidationStyle(tripArrivalDate,"string")}>*</label></div>
 <div style={sameLineStyle}>Trip Arrival time  : <input type="text" onChange={e=>setTripArrivalTime(e.target.value)} value={tripArrivalTime} /> </div>
-&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle} ><label style={getValidationStyle(tripArrivalTime,"string")}>*</label></div>
 <div style={sameLineStyle}>Hand over location  : <input type="text" onChange={e=>setHandOverLocation(e.target.value)} value={handOverLocation} /> </div>
+<div style={sameLineStyle} ><label style={getValidationStyle(handOverLocation,"string")}>*</label></div>
 </div>
 <br></br>
 <div>
 <div style={sameLineStyle}>can take food stuff? : <input type="checkbox" checked={canTakeFoodStuff} onChange={e=>setCanTakeFoodStuff(e.target.checked)} /> </div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div style={sameLineStyle} ><label style={getValidationStyle(canTakeFoodStuff.toString(),"string")}>*</label></div>
 <div style={sameLineStyle}> can be package hidden? <input type="checkbox" checked={canBeHidden} onChange={e=>setCanBeHidden(e.target.checked)}/></div>
+<div style={sameLineStyle} ><label style={getValidationStyle(canBeHidden.toString(),"string")}>*</label></div>
 </div>
 <br></br>
 <div> The maximum weight than can be delivered is: 
-&nbsp;&nbsp;&nbsp;
 <input type="radio" value="5" name="acceptableWeight"  onChange={e=>setSelectedWeight(e.target.value)}/> beatween 0 to 5 kilo
-&nbsp;&nbsp;&nbsp;
 <input type="radio" value="10" name="acceptableWeight"  onChange={e=>setSelectedWeight(e.target.value)}/> beatween 5 to 10 kilo
-&nbsp;&nbsp;&nbsp;
 <input type="radio" value="15" name="acceptableWeight" onChange={e=>setSelectedWeight(e.target.value)}/> more than 10 kilo
 </div> 
 <br/>
